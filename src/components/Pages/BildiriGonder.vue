@@ -7,13 +7,13 @@
     <div class="container">
       <div class="section-title text-center">
         <div class="hr-title-home hr-long center">
-          <abbr>Bildiri Özeti Gönder </abbr>
+          <abbr>Bildiri Gönder </abbr>
         </div>
       </div>
     </div>
 
     <div class="container">
-      <div class="row justify-content-center">
+      <div>
         <div class="col-md-12 text-center">
           <div class="about-content">
             <p>
@@ -30,7 +30,7 @@
         <br /><br /><br /><br /><br /><br />
         <form role="form" class="contactForm">
           <p>* 1. Bildiri Başlığı (En Fazla 200 Karakter Kullanınız)</p>
-          <div class="form-group">
+          <div class="form-group" >
             <div class="validation"></div>
             <input
               v-model="mail.bildiri_basligi"

@@ -4,11 +4,16 @@
     id="about-us"
     class="about-us padd-section wow fadeInUp"
   >
-    <Slider/>   
-  <div class="container">
-    <div class="row content">
-      
-      <div class="col-sm-8 text-left">
+    <div class="container">
+      <div class="section-title text-center">
+        <div class="hr-title-home hr-long center">
+          <abbr>Anasayfa</abbr>
+        </div>
+      </div>
+    
+
+    <div class="container">
+      <div class="row justify-content-center">
         <div class="col-md-6 text-center">
           <div class="about-content">
             <h3 v-html="'<div>' + result.name + '</div>'"></h3>
@@ -20,12 +25,12 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
   </section>
 </template>
 
 <script>
-    import Slider from "../Content_components/Slider";
+    
     import axios from "axios";
     import store from "../store";
 
@@ -57,7 +62,7 @@
       });
   },
        components: {
-        Slider,
+    
         }
     }
 </script>

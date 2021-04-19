@@ -15,7 +15,7 @@
           :class="{ active: true, active: index == 0 }"
         ></li>
       </ol>
-      <div class="carousel-inner" style="height: 500px">
+      <div class="carousel-inner" style="height: 40%; width:100%">
         <div
           style="height: 100%"
           class="carousel-item"
@@ -26,7 +26,7 @@
             backgroundImage: 'url(' + img_base_url + item.img_url + ')',
           }"
         >
-          <div
+          <!-- <div
             class="carousel-caption d-md-block"
             style="background-color: #0b0a0a78"
           >
@@ -41,7 +41,7 @@
               id="slidertext"
               v-html="'<div>' + item.content + '</div>'"
             ></p>
-          </div>
+          </div> -->
         </div>
         <a
           class="carousel-control-prev"

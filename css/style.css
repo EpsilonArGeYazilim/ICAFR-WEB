@@ -2228,9 +2228,9 @@ textarea {
     }
 }
 
-a:hover {
+/* a:hover {
     color: #fff;
-}
+} */
 
 .panel a:hover {
     color: #777;
