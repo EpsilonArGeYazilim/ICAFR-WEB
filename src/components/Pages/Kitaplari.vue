@@ -46,7 +46,7 @@ export default {
     });
 
     let dataUrl =
-      store.state.base_url + "Page/getPage.php?key=123&page_number=1";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=6";
     return axios
       .get(dataUrl)
       .then((response) => {

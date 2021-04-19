@@ -14,7 +14,6 @@
 
     <div class="container">
       <div class="row justify-content-center">
-
         <div class="col-md-6 text-center">
           <div class="about-content">
             <h3 v-html="'<div>' + result.name + '</div>'"></h3>
