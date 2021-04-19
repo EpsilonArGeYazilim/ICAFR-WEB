@@ -10,23 +10,23 @@
           <abbr>Önemli Tarihler</abbr>
         </div>
       </div>
-   
-
     <div class="container">
-       
-
       <div class="row justify-content-center">
 
         <div class="col-md-6 text-center">
           <div class="about-content">
-            
+            <h3 v-html="'<div>' + result.name + '</div>'"></h3>
             <p
               v-html="'<div>' + result.content + '</div>'"
             ></p>
           </div>
+          <img :src="img_base_url+result.img_url" alt="About"/>
         </div>
       </div>
-    </div> </div>
+    </div>
+
+    
+    </div>
   </section>
 </template>
 
@@ -51,7 +51,7 @@ export default {
     });
 
     let dataUrl =
-      store.state.base_url + "Page/getPage.php?key=123&page_number=2";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=3";
     return axios
       .get(dataUrl)
       .then((response) => {

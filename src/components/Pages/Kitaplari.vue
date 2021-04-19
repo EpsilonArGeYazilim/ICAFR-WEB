@@ -7,7 +7,7 @@
     <div class="container">
       <div class="section-title text-center">
         <div class="hr-title-home hr-long center">
-          <abbr>Yayın Olanakları</abbr>
+          <abbr>Kitapları</abbr>
         </div>
       </div>
 
@@ -15,9 +15,10 @@
         <div class="row justify-content-center">
           <div class="col-md-6 text-center">
             <div class="about-content">
-              <h3 v-html="'<div>' + result.title + '</div>'"></h3>
+              <h3 v-html="'<div>' + result.name + '</div>'"></h3>
               <p v-html="'<div>' + result.content + '</div>'"></p>
             </div>
+            <img :src="img_base_url+result.img_url" alt="About"/>
           </div>
         </div>
       </div>
@@ -45,12 +46,12 @@ export default {
     });
 
     let dataUrl =
-      store.state.base_url + "Mission/getAllColoumnMission.php?key=123";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=1";
     return axios
       .get(dataUrl)
       .then((response) => {
         //console.log(response);
-        this.result = response.data.data;
+        this.result = response.data.result;
         //console.log(this.result);
       })
       .catch((err) => {
