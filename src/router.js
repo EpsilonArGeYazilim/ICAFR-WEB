@@ -22,6 +22,7 @@ import Kurullar from "./components/Pages/Kurullar"
 import OnemliTarihler from "./components/Pages/OnemliTarihler"
 import Kitaplari from "./components/Pages/Kitaplari"
 import Paydaslar from "./components/Pages/Paydaslar"
+import Kayit from "./components/Pages/Kayit"
 import KongreHakkinda from "./components/Pages/KongreHakkinda"
 import BildiriArsivi from "./components/Pages/BildiriArsivi"
 import BildiriGonder from "./components/Pages/BildiriGonder"
@@ -151,6 +152,11 @@ const routes =  [
             path: '/paydaslar',
             name: 'paydaslar',
             component: Paydaslar,
+        },
+        {
+            path: '/kayit',
+            name: 'kayit',
+            component: Kayit,
         },
         {
             path: '/kongre_hakkinda',
