@@ -10,6 +10,17 @@
           <abbr>Kayıt</abbr>
         </div>
       </div>
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="about-content">
+            <h3 v-html="'<div>' + result.name + '</div>'"></h3>
+            <p
+              v-html="'<div>' + result.content + '</div>'"
+            ></p>
+          </div>
+          <img :src="img_base_url+result.img_url" alt="About"/>
+        </div>
+      </div>
     </div>
 
     <div class="container">
@@ -199,6 +210,9 @@ import store from "../store";
 export default {
   data() {
     return {
+      result: [],
+      img_base_url: store.state.img_base_url,
+
       warnAdSoyad: "",
       warnUnvan: "",
       warnKurum: "",
@@ -223,6 +237,26 @@ export default {
         banka: "",
       },
     };
+  },
+  mounted: function () {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+
+    let dataUrl =
+      store.state.base_url + "Page/getPage.php?key=123&page_number=6";
+    return axios
+      .get(dataUrl)
+      .then((response) => {
+        //console.log(response);
+        this.result = response.data.result;
+        //console.log(this.result);
+      })
+      .catch((err) => {
+        //console.log(err.response);
+      });
   },
   methods: {
     sendMail: function () {
@@ -254,43 +288,43 @@ export default {
 
       var key = true;
 
-      if (!(this.mail.ad_soyad.length == 0)) {
+      if (this.mail.ad_soyad.length == 0) {
         this.warnAdSoyad = "* Lütfen ad soyad alanını boş bırakmayınız !";
         key = false;
       }
-      if (!(this.mail.unvan.length == 0)) {
+      if (this.mail.unvan.length == 0) {
         this.warnUnvan = "* Lütfen unvan alanını boş bırakmayınız !";
         key = false;
       }
-      if (!(this.mail.kurum.length == 0)) {
+      if (this.mail.kurum.length == 0) {
         this.warnKurum = "* Lütfen kurum alanını boş bırakmayınız !";
         key = false;
       }
-      if (!(this.mail.tercihiniz.length == 0)) {
+      if (this.mail.tercihiniz.length == 0) {
         this.warnTercihiniz = "* Lütfen katılım tercihi alanını boş bırakmayınız !";
         key = false;
       }
-      if (!(this.mail.adres.length == 0)) {
+      if (this.mail.adres.length == 0) {
         this.warnAdres = "* Lütfen adres alanını boş bırakmayınız !";
         key = false;
       }
-      if (!(this.mail.telefon.length == 0)) {
+      if (this.mail.telefon.length == 0) {
         this.warnTelefon = "* Lütfen telefon alanını boş bırakmayınız !";
         key = false;
       }
-      if (!(this.mail.e_posta.length == 0)) {
+      if (this.mail.e_posta.length == 0) {
         this.warnEposta = "* Lütfen e-posta alanını boş bırakmayınız !";
         key = false;
       }
-       if (!(this.mail.dekont_tarihi.length == 0)) {
+       if (this.mail.dekont_tarihi.length == 0) {
         this.warnDekontTarihi = "* Lütfen dekont tarihi alanını boş bırakmayınız !";
         key = false;
       }
-       if (!(this.mail.dekont_numarasi.length == 0)) {
+       if (this.mail.dekont_numarasi.length == 0) {
         this.warnDekontNumarası = "* Lütfen dekont numarası alanını boş bırakmayınız !";
         key = false;
       }
-       if (!(this.mail.banka.length == 0)) {
+       if (this.mail.banka.length == 0) {
         this.warnOdeme = "* Lütfen ödeme yapılan banka alanını boş bırakmayınız !";
         key = false;
       }

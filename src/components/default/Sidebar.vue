@@ -8,7 +8,7 @@
         <div
           v-for="(item, index) in result"
           :key="index"
-          class="col-md-6 col-lg-4"
+          class="col-md-12 col-lg-12"
           style="margin-bottom: 10px"
         >
           <div class="block-blog text-left">

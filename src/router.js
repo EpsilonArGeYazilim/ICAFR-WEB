@@ -26,6 +26,7 @@ import Kayit from "./components/Pages/Kayit"
 import KongreHakkinda from "./components/Pages/KongreHakkinda"
 import BildiriArsivi from "./components/Pages/BildiriArsivi"
 import BildiriGonder from "./components/Pages/BildiriGonder"
+
 import jQuery from 'jquery'
 window.jQuery = window.$ = jQuery
 
