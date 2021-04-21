@@ -1,9 +1,9 @@
 <template>
   <div>
-    <footer class="footer">
+    <footer class="footer" style="background-color: rgb(117 29 38);">
       <div class="container clearfix">
-        <div class="row">
-          <div class="col-sm-4 col-md-4 col-lg-3">
+        <div class="row" >
+          <div class="col-sm-4 col-md-4 col-lg-4">
             <div class="footer-logo">
               <div id="logo" class="pull-left">
                 <a class="scrollto"
@@ -53,7 +53,7 @@
             </div>
           </div>
 
-          <div class="col-sm-4 col-md-4 col-lg-3">
+          <div class="col-sm-4 col-md-4 col-lg-4">
             <div class="list-menu">
               <div id="list">
                 <div>
@@ -82,19 +82,11 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>          
 
-          <div class="col-sm-4 col-md-4 col-lg-3">
+
+          <div class="col-sm-4 col-md-4 col-lg-4">
             <Fmenu />
-          </div>
-
-          <div class="col-sm-5 col-md-5 col-lg-3">
-            <div>
-              <div class="form">
-                <h4>Hızlı İletişim</h4>
-                <ContactForm />
-              </div>
-            </div>
           </div>
         </div>
       </div>

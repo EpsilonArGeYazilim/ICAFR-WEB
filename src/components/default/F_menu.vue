@@ -4,10 +4,10 @@
             <h4>Menü</h4>
 
             <ul class="list-unstyled">
-              <li><router-link class="nav-link item" to='/service' tag='a'>Hizmetlerimiz</router-link></li>
-              <li><router-link class="nav-link item" to='/project' tag='a'>Projelerimiz</router-link></li>
-              <li><router-link class="nav-link item" to='/team' tag='a'>Ekibimiz</router-link></li>
-              <li><router-link class="nav-link item" to='/contact' tag='a'>İletişim</router-link></li>
+              <li><router-link class="nav-link item" to='/bildiri_gonder' tag='a'>Bildiri Gönder</router-link></li>
+              <li><router-link class="nav-link item" to='/kayit' tag='a'>Kayıt</router-link></li>
+              <li><router-link class="nav-link item" to='/kurullar' tag='a'>Kurullar</router-link></li>
+              <li><router-link class="nav-link item" to='/paydaslar' tag='a'>Paydaşlar</router-link></li>
             </ul>
 
           </div>

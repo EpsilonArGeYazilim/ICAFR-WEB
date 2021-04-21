@@ -38,25 +38,39 @@
             <router-link class="nav-link" to="/" tag="a">Anasayfa</router-link>
           </li>
           <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/kongre_hakkinda" tag="a">Kongre Hakkında</router-link>
+            <router-link class="nav-link" to="/kongre_hakkinda" tag="a"
+              >Kongre Hakkında</router-link
+            >
           </li>
           <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/onemli_tarihler" tag="a">Önemli Tarihler</router-link>
-          </li>
-         <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/kurullar" tag="a">Kurullar</router-link>
-          </li>
-          <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/paydaslar" tag="a">Paydaşlar</router-link>
+            <router-link class="nav-link" to="/onemli_tarihler" tag="a"
+              >Önemli Tarihler</router-link
+            >
           </li>
           <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/bildiri_gonder" tag="a">Bildiri Gönder</router-link>
+            <router-link class="nav-link" to="/kurullar" tag="a"
+              >Kurullar</router-link
+            >
           </li>
           <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/kayit" tag="a">Kayıt</router-link>
+            <router-link class="nav-link" to="/paydaslar" tag="a"
+              >Paydaşlar</router-link
+            >
           </li>
           <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/kitaplari" tag="a">Kitapları</router-link>
+            <router-link class="nav-link" to="/bildiri_gonder" tag="a"
+              >Bildiri Gönder</router-link
+            >
+          </li>
+          <li v-on:click="scrollTop" class="nav-item active item">
+            <router-link class="nav-link" to="/kayit" tag="a"
+              >Kayıt</router-link
+            >
+          </li>
+          <li v-on:click="scrollTop" class="nav-item active item">
+            <router-link class="nav-link" to="/kitaplari" tag="a"
+              >Kitapları</router-link
+            >
           </li>
           <li v-on:click="scrollTop" class="nav-item active">
             <router-link class="nav-link item" to="/contact" tag="a"

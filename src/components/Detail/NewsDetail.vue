@@ -2,7 +2,6 @@
   <section id="about-us" class="about-us padd-section wow fadeInUp">
     <div class="detail">
       <div class="container">
-        <p align="right">Etkinlik</p>
         <div class="row justify-content-center">
           <div class="col-md-8">
             <img :src="img_base_url + result.img_url" alt="img" />

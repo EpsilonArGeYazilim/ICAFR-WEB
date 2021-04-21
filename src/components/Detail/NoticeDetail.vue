@@ -2,7 +2,6 @@
   <section id="about-us" class="about-us padd-section wow fadeInUp">
     <div class="detail">
       <div class="container">
-        <p align="right">Etkinlik</p>
         <div class="row justify-content-center">
           <div class="col-md-8">
             <img :src="img_base_url + result.img_url" alt="img" />
@@ -16,7 +15,7 @@
                 style="color: gray"
                 v-html="'<div>' + result.header + '</div>'"
               ></h2>
-              <p v-html="'<div>' + result.content + '</div>'"></p>
+              <p v-html="'<div>' + result.content + '</div>'" align="center"></p>
               <p align="right">{{ result.reg_date }}</p>
             </div>
           </div>
