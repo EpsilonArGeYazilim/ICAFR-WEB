@@ -44,80 +44,47 @@
 
           <div class="form-group">
             <p>* 2.Unvan</p>
-            <select
-              class="form-control"
-              id="unvan"
-              name="unvan"
-              style="width: 50%"
-              data-msg="*"
-            >
-              <option value="">deneme1</option>
-              <option value="">deneme</option>
-              <option value="">ykffyx</option>
-              <p style="color: #903025">{{ warnUnvan }}</p>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <p>3. Yukarıda "Diğer" Seçeneği İşaretlenmiş İse Unvan</p>
             <input
               type="text"
               class="form-control"
               name="unvan"
               id="unvan"
-              placeholder="unvan"
-              data-rule="-----"
+              placeholder="Ünvan"
+              data-rule="minlen:4"
+              data-msg="*"
             />
+            <p style="color: #903025">{{ warnUnvan }}</p>
           </div>
 
           <div class="form-group">
-            <p>* 4. Görevli Olduğunuz Kurum</p>
-            <select
+            <p>* 3. Görevli Olduğunuz Kurum</p>
+            <input
+              type="text"
               class="form-control"
-              id="kurum"
               name="kurum"
-              style="width: 50%"
+              id="kurum"
+              placeholder="Kurum"
+              data-rule="minlen:4"
               data-msg="*"
-            >
-              <option value="">deneme1</option>
-              <option value="">deneme</option>
-              <option value="">Lktfktk</option>
-            </select>
+            />
             <p style="color: #903025">{{ warnKurum }}</p>
           </div>
           <div class="form-group">
-            <p>
-              5. Yukarıda "Diğer" Seçeneği İşaretlenmiş İse Görevli Olunan
-              Kurum/Kuruluş
-            </p>
-            <select
+            <p>* 4. Kongreye Katılım Tercihiniz</p>
+            <input
+              type="text"
               class="form-control"
-              id="kurum"
               name="tercihiniz"
-              style="width: 50%"
-            >
-              <option value="">deneme1</option>
-              <option value="">deneme</option>
-              <option value="">Lktfktk</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <p>* 6. Kongreye Katılım Tercihiniz</p>
-            <select
-              class="form-control"
               id="tercihiniz"
-              name="tercihiniz"
-              style="width: 50%"
-            >
-              <option value="">deneme1</option>
-              <option value="">deneme</option>
-              <option value="">Lktfktk</option>
-            </select>
+              placeholder="Tercihiniz"
+              data-rule="minlen:4"
+              data-msg="*"
+            />
             <p style="color: #903025">{{ warnTercihiniz }}</p>
           </div>
 
           <div class="form-group">
-            <p>* 8. Adresiniz</p>
+            <p>* 5. Adresiniz</p>
             <input
               type="text"
               class="form-control"
@@ -130,7 +97,7 @@
             <p style="color: #903025">{{ warnAdres }}</p>
           </div>
           <div class="form-group">
-            <p>* 9. Telefon</p>
+            <p>* 6. Telefon</p>
             <input
               type="number"
               class="form-control"
@@ -143,7 +110,7 @@
             <p style="color: #903025">{{ warnTelefon }}</p>
           </div>
           <div class="form-group">
-            <p>* 10. e-Posta</p>
+            <p>* 7. e-Posta</p>
             <input
               type="email"
               class="form-control"
@@ -156,7 +123,7 @@
             <p style="color: #903025">{{ warnEposta }}</p>
           </div>
           <div class="form-group">
-            <p>* 11. Kongre Katılım Ücreti Ödeme Bilgileriniz</p>
+            <p>* 8. Kongre Katılım Ücreti Ödeme Bilgileriniz</p>
             <p>Dekont Tarihi</p>
             <input
               type="text"
@@ -246,7 +213,7 @@ export default {
     });
 
     let dataUrl =
-      store.state.base_url + "Page/getPage.php?key=123&page_number=6";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=6&lan_id=1";
     return axios
       .get(dataUrl)
       .then((response) => {

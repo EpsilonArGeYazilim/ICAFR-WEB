@@ -49,7 +49,7 @@ export default {
     });
 
     let dataUrl =
-      store.state.base_url + "Page/getPage.php?key=123&page_number=2";
+      store.state.base_url + "Page/getPage.php?key=123&page_number=2&lan_id=1";
     return axios
       .get(dataUrl)
       .then((response) => {
