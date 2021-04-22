@@ -79,7 +79,7 @@ export default {
     },
   created: function () {
     let datas = [];
-    let dataUrl = store.state.base_url + "Contact/getContactAllColumn.php?key=123";
+    let dataUrl = store.state.base_url + "Contact/getContactAllColumn.php?key=123&lan_id=1";
     return axios
       .get(dataUrl)
       .then((response) => {

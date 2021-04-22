@@ -37,6 +37,7 @@
               placeholder="Ad Soyad"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.ad_soyad"
             />
 
             <p style="color: #903025">{{ warnAdSoyad }}</p>
@@ -52,6 +53,7 @@
               placeholder="Ünvan"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.unvan"
             />
             <p style="color: #903025">{{ warnUnvan }}</p>
           </div>
@@ -66,6 +68,7 @@
               placeholder="Kurum"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.kurum"
             />
             <p style="color: #903025">{{ warnKurum }}</p>
           </div>
@@ -79,6 +82,7 @@
               placeholder="Tercihiniz"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.tercih"
             />
             <p style="color: #903025">{{ warnTercihiniz }}</p>
           </div>
@@ -93,6 +97,7 @@
               placeholder="Adresiniz"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.adres"
             />
             <p style="color: #903025">{{ warnAdres }}</p>
           </div>
@@ -106,6 +111,7 @@
               placeholder="Telefon"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.telefon"
             />
             <p style="color: #903025">{{ warnTelefon }}</p>
           </div>
@@ -119,6 +125,7 @@
               placeholder="e-posta"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.e_posta"
             />
             <p style="color: #903025">{{ warnEposta }}</p>
           </div>
@@ -132,6 +139,7 @@
               id="dekont_tarihi"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.dekont_tarihi"
             />
             <p style="color: #903025">{{ warnDekontTarihi }}</p>
             <br />
@@ -143,6 +151,7 @@
               id="dekont_numarasi"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.dekont_numarasi"
             />
             <p style="color: #903025">{{ warnDekontNumarası }}</p>
             <br />
@@ -154,16 +163,18 @@
               id="banka"
               data-rule="minlen:4"
               data-msg="*"
+              v-model="mail.banka"
             />
             <p style="color: #903025">{{ warnBanka }}</p>
           </div>
           <br />
-          <div class="btn bnt-light">
+         
+        </form>
+         <div class="btn bnt-light">
             <button @click="sendMail()" class="btn btn-primary" type="submit">
               <i class="fa fa-fw fa-lg fa-check-circle"></i>Gönder
             </button>
           </div>
-        </form>
       </div>
     </div>
   </section>
@@ -195,7 +206,7 @@ export default {
         ad_soyad: "",
         unvan: "",
         kurum: "",
-        tercihiniz: "",
+        tercih: "",
         adres: "",
         telefon: "",
         e_posta: "",
@@ -238,7 +249,7 @@ export default {
 
       console.log(window.location.host);
 
-      var url = store.state.base_url + "mail.php";
+      var url = store.state.base_url + "mailKayit.php";
 
       this.warnAdSoyad = "";
       this.warnUnvan = "";
@@ -254,7 +265,7 @@ export default {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
       var key = true;
-
+  /*
       if (this.mail.ad_soyad.length == 0) {
         this.warnAdSoyad = "* Lütfen ad soyad alanını boş bırakmayınız !";
         key = false;
@@ -299,12 +310,12 @@ export default {
       if (key == false) {
         return false;
       }
-
+*/
       var datas = {
         ad_soyad: this.mail.ad_soyad,
         unvan: this.mail.unvan,
         kurum: this.mail.kurum,
-        tercihiz: this.mail.tercihiz,
+        tercih: this.mail.tercih,
         adres: this.mail.adres,
         telefon: this.mail.telefon,
         e_posta: this.mail.e_posta,

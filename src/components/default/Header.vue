@@ -16,7 +16,7 @@
               align="left"
               id="logoepsilon"
               :src="img_base_url + result.logo_url"
-              alt="Epsilon Arge"
+              alt=""
             />
           </router-link>
         </h1>
@@ -100,7 +100,7 @@ export default {
   },
   mounted: function () {
     let dataUrl =
-      store.state.base_url + "General/getAllColumnGeneral.php?key=123";
+      store.state.base_url + "General/getAllColumnGeneral.php?key=123&lan_id=1";
     axios
       .get(dataUrl)
       .then((response) => {
@@ -111,7 +111,7 @@ export default {
         console.log(err.response);
       });
 
-    dataUrl = store.state.base_url + "Category/getAllCategory.php?key=123";
+    dataUrl = store.state.base_url + "Category/getAllCategory.php?key=123&lan_id=1";
     axios
       .get(dataUrl)
       .then((response) => {

@@ -124,7 +124,7 @@ export default {
   created: function () {
     let datas = [];
     let dataUrl =
-      store.state.base_url + "General/getAllColumnGeneral.php?key=123";
+      store.state.base_url + "General/getAllColumnGeneral.php?key=123&lan_id=1";
     axios
       .get(dataUrl)
       .then((response) => {
@@ -137,7 +137,7 @@ export default {
         console.log(err.response);
       });
 
-    dataUrl = store.state.base_url + "Contact/getContactAllColumn.php?key=123";
+    dataUrl = store.state.base_url + "Contact/getContactAllColumn.php?key=123&lan_id=1";
     axios
       .get(dataUrl)
       .then((response) => {

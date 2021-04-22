@@ -7,10 +7,18 @@
       <div class="row">
         <div
           v-for="(item, index) in result"
+          
           :key="index"
           class="col-md-12 col-lg-12"
           style="margin-bottom: 10px"
-        >
+        >  
+        <a
+              @click="reload()"
+                :href="'/notice_detail?notice_id=' + item.id"
+                style="font-size: 14px"
+                class="readmore"
+               
+                >
           <div class="block-blog text-left">
             <div class="content-blog">
               <a
@@ -33,6 +41,7 @@
               <p>{{ item.reg_date }}</p>
             </div>
           </div>
+          </a>
         </div>
       </div>
     </div>
