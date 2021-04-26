@@ -14,11 +14,9 @@
         <div class="col-md-6 text-center">
           <div class="about-content">
             <h3 v-html="'<div>' + result.name + '</div>'"></h3>
-            <p
-              v-html="'<div>' + result.content + '</div>'"
-            ></p>
+            <p v-html="'<div>' + result.content + '</div>'"></p>
           </div>
-          <img :src="img_base_url+result.img_url" alt="About"/>
+          <img :src="img_base_url + result.img_url" alt="About" />
         </div>
       </div>
     </div>
@@ -28,7 +26,21 @@
         <br />
         <form role="form" class="contactForm">
           <div class="form-group">
-            <p>* 1.Ad Soyad</p>
+            <p>* 1. Unvan</p>
+            <input
+              type="text"
+              class="form-control"
+              name="unvan"
+              id="unvan"
+              placeholder="Unvan"
+              data-rule="minlen:4"
+              data-msg="*"
+              v-model="mail.unvan"
+            />
+            <p style="color: #903025">{{ warnUnvan }}</p>
+          </div>
+          <div class="form-group">
+            <p>* 2. Ad Soyad</p>
             <input
               type="text"
               class="form-control"
@@ -39,27 +51,11 @@
               data-msg="*"
               v-model="mail.ad_soyad"
             />
-
             <p style="color: #903025">{{ warnAdSoyad }}</p>
           </div>
 
           <div class="form-group">
-            <p>* 2.Unvan</p>
-            <input
-              type="text"
-              class="form-control"
-              name="unvan"
-              id="unvan"
-              placeholder="Ünvan"
-              data-rule="minlen:4"
-              data-msg="*"
-              v-model="mail.unvan"
-            />
-            <p style="color: #903025">{{ warnUnvan }}</p>
-          </div>
-
-          <div class="form-group">
-            <p>* 3. Görevli Olduğunuz Kurum</p>
+            <p>* 3. Kurum/Kuruluş</p>
             <input
               type="text"
               class="form-control"
@@ -72,51 +68,23 @@
             />
             <p style="color: #903025">{{ warnKurum }}</p>
           </div>
-          <div class="form-group">
-            <p>* 4. Kongreye Katılım Tercihiniz</p>
-            <input
-              type="text"
-              class="form-control"
-              name="tercihiniz"
-              id="tercihiniz"
-              placeholder="Tercihiniz"
-              data-rule="minlen:4"
-              data-msg="*"
-              v-model="mail.tercih"
-            />
-            <p style="color: #903025">{{ warnTercihiniz }}</p>
-          </div>
 
           <div class="form-group">
-            <p>* 5. Adresiniz</p>
-            <input
-              type="text"
-              class="form-control"
-              name="adres"
-              id="adres"
-              placeholder="Adresiniz"
-              data-rule="minlen:4"
-              data-msg="*"
-              v-model="mail.adres"
-            />
-            <p style="color: #903025">{{ warnAdres }}</p>
-          </div>
-          <div class="form-group">
-            <p>* 6. Telefon</p>
+            <p>* 4. Telefon</p>
             <input
               type="number"
               class="form-control"
               name="telefon"
               id="telefon"
               placeholder="Telefon"
-              data-rule="minlen:4"
+              data-rule="minlen:9"
               data-msg="*"
               v-model="mail.telefon"
             />
             <p style="color: #903025">{{ warnTelefon }}</p>
           </div>
           <div class="form-group">
-            <p>* 7. e-Posta</p>
+            <p>* 5. e-Posta</p>
             <input
               type="email"
               class="form-control"
@@ -129,52 +97,29 @@
             />
             <p style="color: #903025">{{ warnEposta }}</p>
           </div>
-          <div class="form-group">
-            <p>* 8. Kongre Katılım Ücreti Ödeme Bilgileriniz</p>
-            <p>Dekont Tarihi</p>
-            <input
-              type="text"
-              class="form-control"
-              name="dekont_tarihi"
-              id="dekont_tarihi"
-              data-rule="minlen:4"
-              data-msg="*"
-              v-model="mail.dekont_tarihi"
-            />
-            <p style="color: #903025">{{ warnDekontTarihi }}</p>
-            <br />
-            <p>Dekont Numarası</p>
-            <input
-              type="number"
-              class="form-control"
-              name="dekont_numarasi"
-              id="dekont_numarasi"
-              data-rule="minlen:4"
-              data-msg="*"
-              v-model="mail.dekont_numarasi"
-            />
-            <p style="color: #903025">{{ warnDekontNumarası }}</p>
-            <br />
-            <p>Ödeme Yapılan Banka</p>
-            <input
-              type="text"
-              class="form-control"
-              name="banka"
-              id="banka"
-              data-rule="minlen:4"
-              data-msg="*"
-              v-model="mail.banka"
-            />
-            <p style="color: #903025">{{ warnBanka }}</p>
+          <div class="form-group row">
+            <label class="control-label col-md-3">
+              6. Ödeme Belgesi (Dekont) Yükle:
+            </label>
+            <div class="col-md-8">
+              <div class="fileupload fileupload-new" data-provides="fileupload">
+                <p style="color: red">{{ fileWarn }}</p>
+                <div class="row"></div>
+                <div>
+                  <span class="btn btn-theme02 btn-file">
+                    <input id="file" type="file" ref="file" class="default" />
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
           <br />
-         
         </form>
-         <div class="btn bnt-light">
-            <button @click="sendMail()" class="btn btn-primary" type="submit">
-              <i class="fa fa-fw fa-lg fa-check-circle"></i>Gönder
-            </button>
-          </div>
+        <div class="btn bnt-light">
+          <button @click="sendMail()" class="btn btn-primary" type="submit">
+            <i class="fa fa-fw fa-lg fa-check-circle"></i>Gönder
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -187,32 +132,24 @@ import axios from "axios";
 import store from "../store";
 export default {
   data() {
+    
     return {
-      result: [],
+      result :[],
       img_base_url: store.state.img_base_url,
-
+      fileWarn: "",
+      file: "",
       warnAdSoyad: "",
       warnUnvan: "",
       warnKurum: "",
-      warnTercihiniz: "",
-      warnAdres: "",
       warnTelefon: "",
       warnEposta: "",
-      warnDekontTarihi: "",
-      warnDekontNumarası: "",
-      warnBanka: "",
 
       mail: {
         ad_soyad: "",
         unvan: "",
         kurum: "",
-        tercih: "",
-        adres: "",
         telefon: "",
         e_posta: "",
-        dekont_tarihi: "",
-        dekont_numarasi: "",
-        banka: "",
       },
     };
   },
@@ -237,35 +174,23 @@ export default {
       });
   },
   methods: {
+    reload: function () {
+      //location.reload();
+    },
     sendMail: function () {
-      axios
-        .get("http://www.geoplugin.net/json.gp")
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(error.response);
-        });
-
-      console.log(window.location.host);
-
-      var url = store.state.base_url + "mailKayit.php";
-
       this.warnAdSoyad = "";
       this.warnUnvan = "";
       this.warnKurum = "";
-      this.warnTercihiniz = "";
-      this.warnAdres = "";
       this.warnTelefon = "";
       this.warnEposta = "";
-      this.warnDekontTarihi = "";
-      this.warnDekontNumarası = "";
-      this.warnBanka = "";
+   var key = true;
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
+      if(!(re.test(this.mail.e_posta)))
+    {
+        this.warnEposta="* Lütfen eposta alanını uygun formatta giriniz !";
+    }
       var key = true;
-  /*
       if (this.mail.ad_soyad.length == 0) {
         this.warnAdSoyad = "* Lütfen ad soyad alanını boş bırakmayınız !";
         key = false;
@@ -278,14 +203,7 @@ export default {
         this.warnKurum = "* Lütfen kurum alanını boş bırakmayınız !";
         key = false;
       }
-      if (this.mail.tercihiniz.length == 0) {
-        this.warnTercihiniz = "* Lütfen katılım tercihi alanını boş bırakmayınız !";
-        key = false;
-      }
-      if (this.mail.adres.length == 0) {
-        this.warnAdres = "* Lütfen adres alanını boş bırakmayınız !";
-        key = false;
-      }
+
       if (this.mail.telefon.length == 0) {
         this.warnTelefon = "* Lütfen telefon alanını boş bırakmayınız !";
         key = false;
@@ -294,46 +212,38 @@ export default {
         this.warnEposta = "* Lütfen e-posta alanını boş bırakmayınız !";
         key = false;
       }
-       if (this.mail.dekont_tarihi.length == 0) {
-        this.warnDekontTarihi = "* Lütfen dekont tarihi alanını boş bırakmayınız !";
-        key = false;
-      }
-       if (this.mail.dekont_numarasi.length == 0) {
-        this.warnDekontNumarası = "* Lütfen dekont numarası alanını boş bırakmayınız !";
-        key = false;
-      }
-       if (this.mail.banka.length == 0) {
-        this.warnOdeme = "* Lütfen ödeme yapılan banka alanını boş bırakmayınız !";
-        key = false;
-      }
 
       if (key == false) {
         return false;
       }
-*/
-      var datas = {
-        ad_soyad: this.mail.ad_soyad,
-        unvan: this.mail.unvan,
-        kurum: this.mail.kurum,
-        tercih: this.mail.tercih,
-        adres: this.mail.adres,
-        telefon: this.mail.telefon,
-        e_posta: this.mail.e_posta,
-        dekont_tarihi:this.dekont_tarihi,
-        dekont_numarasi:this.dekont_numarasi,
-        banka:this.banka,
-      };
+
+      this.file = this.$refs.file.files[0];
+      let formData = new FormData();
+      formData.append("file", this.file);
+      var query =
+        store.state.base_url +
+        "CreateKayitForm.php?unvan=" +
+        this.mail.unvan +
+        "&ad_soyad=" +
+        this.mail.ad_soyad +
+        "&kurum=" +
+        this.mail.kurum +
+        "&tel=" +
+        this.mail.telefon +
+        "&eposta=" +
+        this.mail.e_posta;
 
       axios
-        .post(url, JSON.stringify(datas))
-        .then((response) => {
-          if (response.data == true) {
-            location.reload();
-          }
-          //console.log(response);
+        .post(query, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         })
-        .catch((error) => {
-          console.log(error.response);
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          //conso.log(error);
         });
     },
   },
