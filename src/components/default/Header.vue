@@ -79,6 +79,10 @@
           </li>
         </ul>
       </div>
+      <div class="form-group">
+          <a href="" >TR</a>
+          <a href="" >EN</a>
+        </div>
     </nav>
   </header>
 </template>
