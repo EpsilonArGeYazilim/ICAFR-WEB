@@ -21,7 +21,7 @@
               v-html="'<div>' + result.content + '</div>'"
             ></p>
           </div>
-          <img :src="img_base_url+result.img_url" alt="About"/>
+          <img :src="img_base_url+result.img_url" alt="About" @error="NoImg">
         </div>
       </div>
     </div>
@@ -60,6 +60,13 @@
       .catch((err) => {
         //console.log(err.response);
       });
+  },
+  methods:{
+    NoImg: function(event)
+    {
+         setTimeout(() => event.target.style.display = 'none', 1000);
+    }
+
   },
        components: {
     

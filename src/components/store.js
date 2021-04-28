@@ -8,8 +8,8 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 
     state : {
-        base_url : "http://kongre.epsilonarge.com/EpsilonApi/",
-        img_base_url :"http://kongre.epsilonarge.com/img/"
+        base_url : "http://api.icafr.org/EpsilonApi/",
+        img_base_url :"http://api.icafr.org/img/"
     }
 
 })

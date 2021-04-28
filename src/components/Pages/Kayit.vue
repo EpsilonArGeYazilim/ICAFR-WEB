@@ -16,7 +16,7 @@
             <h3 v-html="'<div>' + result.name + '</div>'"></h3>
             <p v-html="'<div>' + result.content + '</div>'"></p>
           </div>
-          <img :src="img_base_url + result.img_url" alt="About" />
+        <img :src="img_base_url+result.img_url" alt="About" @error="NoImg">
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
           <div class="form-group">
             <p>* 4. Telefon</p>
             <input
-              type="number"
+              type="text"
               class="form-control"
               name="telefon"
               id="telefon"
@@ -115,6 +115,8 @@
           </div>
           <br />
         </form>
+        <div id="dogrulama"></div>
+          <p style="color: red">{{ warnDogrulama }}</p>
         <div class="btn bnt-light">
           <button @click="sendMail()" class="btn btn-primary" type="submit">
             <i class="fa fa-fw fa-lg fa-check-circle"></i>Gönder
@@ -134,6 +136,7 @@ export default {
   data() {
     
     return {
+      warnDogrulama: "",
       result :[],
       img_base_url: store.state.img_base_url,
       fileWarn: "",
@@ -154,6 +157,13 @@ export default {
     };
   },
   mounted: function () {
+
+     let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit')
+      document.head.appendChild(recaptchaScript);
+
+      console.log(isSuccess);
+
     window.scrollTo({
       top: 0,
       left: 0,
@@ -174,6 +184,11 @@ export default {
       });
   },
   methods: {
+    NoImg: function(event)
+    {
+         setTimeout(() => event.target.style.display = 'none', 1000);
+    },
+
     reload: function () {
       //location.reload();
     },
@@ -186,32 +201,37 @@ export default {
    var key = true;
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-      if(!(re.test(this.mail.e_posta)))
+      if(!(re.test(this.mail.e_posta) &&  this.mail.e_posta.length<250))
     {
         this.warnEposta="* Lütfen eposta alanını uygun formatta giriniz !";
     }
       var key = true;
-      if (this.mail.ad_soyad.length == 0) {
-        this.warnAdSoyad = "* Lütfen ad soyad alanını boş bırakmayınız !";
+      if (!(this.mail.ad_soyad.length>4 && this.mail.ad_soyad.length<250)) {
+        this.warnAdSoyad = "* Lütfen ad ve soyad alanını 4 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (this.mail.unvan.length == 0) {
-        this.warnUnvan = "* Lütfen unvan alanını boş bırakmayınız !";
+      if (!(this.mail.unvan.length>4 && this.mail.unvan.length<250)) {
+        this.warnUnvan = "* Lütfen unvan alanını 4 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (this.mail.kurum.length == 0) {
-        this.warnKurum = "* Lütfen kurum alanını boş bırakmayınız !";
+      if (!(this.mail.kurum.length >4 && this.mail.kurum.length<250)) {
+        this.warnKurum = "* Lütfen kurum alanını 4 ile 250 karakter arasında giriniz !";
         key = false;
       }
 
-      if (this.mail.telefon.length == 0) {
-        this.warnTelefon = "* Lütfen telefon alanını boş bırakmayınız !";
+      if (!(this.mail.telefon.length >4 && this.mail.telefon.length<250)) {
+        this.warnTelefon = "* Lütfen telefon alanını 4 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (this.mail.e_posta.length == 0) {
-        this.warnEposta = "* Lütfen e-posta alanını boş bırakmayınız !";
+      if (!(this.mail.e_posta.length >4 && this.mail.e_posta.length<250)) {
+        this.warnEposta = "* Lütfen e-posta alanını 4 ile 250 karakter arasında giriniz !";
         key = false;
       }
+      if(isSuccess == false){
+        this.warnDogrulama = "* Lütfen doğrulama işlemini gerçekleştiriniz!";
+        key = false;
+      }
+      isSuccess = false
 
       if (key == false) {
         return false;
@@ -240,9 +260,11 @@ export default {
           },
         })
         .then(function (response) {
-          if(response.data==1)
+          //console.log(response);
+          if(response.data == 1)
           {
             location.reload();
+
           }
         })
         .catch(function (error) {

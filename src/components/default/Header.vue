@@ -79,9 +79,13 @@
           </li>
         </ul>
       </div>
-      <div class="form-group">
-          <a href="" >TR</a>
-          <a href="" >EN</a>
+      <div class="form-group" style="margin-right:10px;">
+          <a href="http://icafr.org" style="color:red;" >
+            <h4 style="color:#800000;">TR</h4>
+            </a>
+          <a href="http://en.icafr.org" style="color:red;">
+            <h4 style="color:#800000;">EN</h4>
+            </a>
         </div>
     </nav>
   </header>

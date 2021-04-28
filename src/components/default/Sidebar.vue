@@ -76,7 +76,7 @@ export default {
         datas = response.data.data;
 
         this.result = datas;
-        console.log(this.result[0].header);
+
       })
       .then((response) => {
         setTimeout(() => (this.situation = false), 5000);

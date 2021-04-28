@@ -43,7 +43,7 @@
                   placeholder="Yazar 1 ORCID Numarası"
                   data-msg="*"
                 />
-                <p style="color: #903025">{{ warnYazar }}</p>
+                <p style="color: #903025">{{ warnYazarOrcid }}</p>
               </div>
               <div class="form-group">
                 <input
@@ -56,7 +56,6 @@
                   data-msg="*"
                 />
                 <p style="color: #903025">{{ warnEposta }}</p>
-                <p style="color: #903025">{{ warnYazar }}</p>
               </div>
             </div>
             <br /><br />
@@ -148,7 +147,10 @@
                 </div>
               </div>
             </div>
+                    <p style="color: red">{{ warnOther }}</p>
           </form>
+          <div id="dogrulama"></div>
+          <p style="color: red">{{ warnDogrulama }}</p>
           <div class="btn bnt-light">
             <button @click="sendMail()" class="btn btn-primary" type="submit">
               <i class="fa fa-fw fa-lg fa-check-circle"></i>Gönder
@@ -171,7 +173,10 @@ export default {
       warnBildiriBasligi: "",
       warnYazar: "",
       warnEposta:"",
+      warnYazarOrcid:"",
       fileWarn: "",
+      warnDogrulama: "",
+      warnOther:"",
       mail: {
         bildiri_basligi: "",
         yazar1AdSoyad: "",
@@ -189,7 +194,16 @@ export default {
     };
   },
 
-  created() {},
+  created() {
+    
+ let recaptchaScript = document.createElement('script')
+      recaptchaScript.setAttribute('src', 'https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit')
+      document.head.appendChild(recaptchaScript);
+
+      console.log(isSuccess);
+
+
+  },
 
   methods: {
     reload: function () {
@@ -199,27 +213,79 @@ export default {
       this.warnBildiriBasligi = "";
       this.warnYazar = "";
       this.warnEposta="";
+      this.warnOther="";
+      this.warnYazarOrcid ="";
+      this.warnDogrulama ="";
+
 
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-      if (!re.test(this.mail.yazar1Mail)) {
-        this.warnEposta = "* Lütfen eposta alanını uygun formatta giriniz !";
-      }
       var key = true;
 
-      if (this.mail.bildiri_basligi.length == 0) {
+      if (!(this.mail.bildiri_basligi.length>4 && this.mail.bildiri_basligi.length<250)) {
         this.warnBildiriBasligi =
-          "* Lütfen bildiri başlığı alanını boş bırakmayınız !";
-        key = false;
-      }
-      if (this.mail.yazar1AdSoyad.length == 0) {
-        this.warnYazar = "* Lütfen yazar alanını boş bırakmayınız !";
+          "* Lütfen bildiri başlığı alanını 4 ile 250 karakter arasında giriniz !";
         key = false;
       }
 
+      if (!(re.test(this.mail.yazar1Mail) &&  this.mail.yazar1Mail.length<250)) {
+        this.warnEposta = "* Lütfen eposta alanını uygun formatta giriniz !";
+        key = false;
+      }
+      if (!(this.mail.yazar1AdSoyad.length>4 && this.mail.yazar1AdSoyad.length<250)) {
+        this.warnYazar = "* Lütfen yazar1 ad soyad alanını 4 ile 250 karakter arasında giriniz !";
+        key = false;
+      }
+      if (!(this.mail.yazar1No.length>4 && this.mail.yazar1No.length<250)) {
+        this.warnYazarOrcid = "* Lütfen yazar1 orcid no alanını 4 ile 250 karakter arasında giriniz !";
+        key = false;
+      }
+
+
+
+      if (!(this.mail.yazar2Mail.length<250)) {
+        this.warnOther = "* Lütfen yazar2 eposta alanını uygun formatta giriniz !";
+        key = false;
+      }
+      if (!(this.mail.yazar2AdSoyad.length<250)) {
+        this.warnOther = "* Lütfen yazar2 ad soyad alanını 4 ile 250 karakter arasında giriniz !";
+        key = false;
+      }
+      if (!(this.mail.yazar2No.length<250)) {
+        this.warnOther = "* Lütfen yazar2 orcid no alanını 4 ile 250 karakter arasında giriniz !";
+        key = false;
+      }
+
+
+
+      if (!(this.mail.yazar3Mail.length<250)) {
+        this.warnOther = "* Lütfen yazar3 eposta alanını uygun formatta giriniz !";
+        key = false;
+      }
+      if (!(this.mail.yazar3AdSoyad.length<250)) {
+        this.warnOther = "* Lütfen yazar3 ad soyad alanını 4 ile 250 karakter arasında giriniz !";
+        key = false;
+      }
+      if (!(this.mail.yazar3No.length<250)) {
+        this.warnOther = "* Lütfen yazar3 orcid no alanını 4 ile 250 karakter arasında giriniz !";
+        key = false;
+      }
+
+
+
+
+
+
+      if(isSuccess == false){
+        this.warnDogrulama = "* Lütfen doğrulama işlemini gerçekleştiriniz!";
+        key = false;
+
+      }
+      isSuccess = false
       if (key == false) {
         return false;
       }
+      
+
 
       this.file = this.$refs.file.files[0];
 
@@ -255,10 +321,12 @@ export default {
           },
         })
         .then(function (response) {
-             if (response.data == 1) {
+          //console.log(response);
+          if(response.data == 1)
+          {
             location.reload();
+
           }
-          console.log(response);
         })
         .catch(function (error) {
           //conso.log(error);

@@ -54,10 +54,7 @@ export default {
       axios
         .get("http://www.geoplugin.net/json.gp")
         .then((response) => {
-             if (response.data == 1) {
-            location.reload();
-          }
-         // console.log(response);
+          console.log(response);
         })
         .catch((error) => {
           console.log(error.response);
@@ -73,8 +70,10 @@ export default {
       axios
         .post(url, JSON.stringify(datas))
         .then((response) => {
-       
-         // console.log(response);
+          if (response.data == true) {
+            location.reload();
+          }
+          //console.log(response);
         })
         .catch((error) => {
           console.log(error.response);
