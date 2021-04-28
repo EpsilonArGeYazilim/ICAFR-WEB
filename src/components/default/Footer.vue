@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer" style="background-color: rgb(117 29 38);">
+    <footer class="footer" style="background-color:rgb(127 144 150);">
       <div class="container clearfix">
         <div class="row" >
           <div class="col-sm-4 col-md-4 col-lg-4">

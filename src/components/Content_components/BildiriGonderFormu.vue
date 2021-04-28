@@ -243,9 +243,9 @@ export default {
         this.mail.yazar2Mail +
         "&yazar3=" +
         this.mail.yazar3AdSoyad +
-        "&yazar1_orcid_no=" +
+        "&yazar3_orcid_no=" +
         this.mail.yazar3No +
-        "&yazar1_eposta=" +
+        "&yazar3_eposta=" +
         this.mail.yazar3Mail;
 
       axios
@@ -255,6 +255,9 @@ export default {
           },
         })
         .then(function (response) {
+             if (response.data == 1) {
+            location.reload();
+          }
           console.log(response);
         })
         .catch(function (error) {

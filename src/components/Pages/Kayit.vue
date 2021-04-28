@@ -240,7 +240,10 @@ export default {
           },
         })
         .then(function (response) {
-          console.log(response);
+          if(response.data==1)
+          {
+            location.reload();
+          }
         })
         .catch(function (error) {
           //conso.log(error);
