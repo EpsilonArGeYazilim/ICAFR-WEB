@@ -14,7 +14,7 @@
 
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-6 text-center">
+
           <div class="about-content">
             <h3 v-html="'<div>' + result.name + '</div>'"></h3>
             <p
@@ -22,7 +22,7 @@
             ></p>
           </div>
           <img :src="img_base_url+result.img_url" alt="About" @error="NoImg">
-        </div>
+
       </div>
     </div>
     </div>

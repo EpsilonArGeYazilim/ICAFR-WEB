@@ -15,14 +15,14 @@
     <div class="container">
       <div class="row justify-content-center">
 
-        <div class="col-md-6 text-center">
+
           <div class="about-content">
             <h3 v-html="'<div>' + result.title + '</div>'"></h3>
             <p
               v-html="'<div>' + result.content + '</div>'"
             ></p>
           </div>
-        </div>
+
       </div>
     </div>
     </div>

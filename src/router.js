@@ -20,7 +20,7 @@ import NoticeDetail from "./components/Detail/NoticeDetail"
 import Redirect from "./components/Pages/Redirect"
 import Kurullar from "./components/Pages/Kurullar"
 import OnemliTarihler from "./components/Pages/OnemliTarihler"
-import Kitaplari from "./components/Pages/Kitaplari"
+import Kitaplar from "./components/Pages/Kitaplar"
 import Paydaslar from "./components/Pages/Paydaslar"
 import Kayit from "./components/Pages/Kayit"
 import KongreHakkinda from "./components/Pages/KongreHakkinda"
@@ -145,9 +145,9 @@ const routes =  [
             component: OnemliTarihler,
         },
         {
-            path: '/kitaplari',
-            name: 'kitaplari',
-            component: Kitaplari,
+            path: '/kitaplar',
+            name: 'kitaplar',
+            component: Kitaplar,
         },
         {
             path: '/paydaslar',

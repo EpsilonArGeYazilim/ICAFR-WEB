@@ -68,8 +68,8 @@
             >
           </li>
           <li v-on:click="scrollTop" class="nav-item active item">
-            <router-link class="nav-link" to="/kitaplari" tag="a"
-              >Kitapları</router-link
+            <router-link class="nav-link" to="/kitaplar" tag="a"
+              >Kitaplar</router-link
             >
           </li>
           <li v-on:click="scrollTop" class="nav-item active">

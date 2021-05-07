@@ -18,14 +18,14 @@
           <img :src="img_base_url + result.img_url" alt="About" />
         </div>
 
-        <div class="col-md-6">
+
           <div class="about-content">
             <h3 v-html="'<div>' + result.title + '</div>'"></h3>
             <p
               v-html="'<div>' + result.content + '</div>'"
             ></p>
           </div>
-        </div>
+
       </div>
     </div>
   </section>

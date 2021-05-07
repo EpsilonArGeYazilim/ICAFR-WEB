@@ -94,7 +94,7 @@
       <div class="copyrights">
         <div class="container">
           <p>
-            &copy; 2020 - {{ year }} Epsilon Arge Yazılım Tüm Hakları Saklıdır
+            &copy; {{ year }} ICAFR.ORG <a href="https://epsilonarge.com">Epsilon Arge Yazılım</a> Tüm Hakları Saklıdır
           </p>
 
           <div class="credits"></div>

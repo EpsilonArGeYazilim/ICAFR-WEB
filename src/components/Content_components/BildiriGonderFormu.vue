@@ -155,7 +155,13 @@
             <button @click="sendMail()" class="btn btn-primary" type="submit">
               <i class="fa fa-fw fa-lg fa-check-circle"></i>Gönder
             </button>
+       
           </div>
+         
+        </div>
+        <div v-if="isWait">
+              <div class="loader"></div>
+              <h3>Lütfen Bekleyiniz Dosya Yükleniyor!!</h3>
         </div>
       </div>
     </main>
@@ -170,6 +176,7 @@ import store from "../store";
 export default {
   data() {
     return {
+      isWait:false,
       warnBildiriBasligi: "",
       warnYazar: "",
       warnEposta:"",
@@ -209,6 +216,11 @@ export default {
     reload: function () {
       //location.reload();
     },
+    isWaitFonk(situation)
+    {
+      this.isWait=situation
+
+    },
     sendMail: function () {
       this.warnBildiriBasligi = "";
       this.warnYazar = "";
@@ -216,6 +228,8 @@ export default {
       this.warnOther="";
       this.warnYazarOrcid ="";
       this.warnDogrulama ="";
+
+      var isWaitFonk = this.isWaitFonk;
 
 
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -272,20 +286,19 @@ export default {
 
 
 
-
-
-
       if(isSuccess == false){
         this.warnDogrulama = "* Lütfen doğrulama işlemini gerçekleştiriniz!";
         key = false;
 
       }
-      isSuccess = false
+      isSuccess = false;
+
       if (key == false) {
         return false;
       }
-      
 
+
+      isWaitFonk(true);
 
       this.file = this.$refs.file.files[0];
 
@@ -314,6 +327,7 @@ export default {
         "&yazar3_eposta=" +
         this.mail.yazar3Mail;
 
+
       axios
         .post(query, formData, {
           headers: {
@@ -322,11 +336,17 @@ export default {
         })
         .then(function (response) {
           //console.log(response);
+          isWaitFonk(false);
+
           if(response.data == 1)
           {
             location.reload();
 
           }
+          else{
+       
+          }
+
         })
         .catch(function (error) {
           //conso.log(error);
@@ -335,3 +355,26 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
