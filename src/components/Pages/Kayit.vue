@@ -123,6 +123,10 @@
           </button>
         </div>
       </div>
+              <div v-if="isWait">
+              <div class="loader"></div>
+              <h3>Lütfen Bekleyiniz Dosya Yükleniyor!!</h3>
+        </div>
     </div>
   </section>
 </template>
@@ -136,6 +140,7 @@ export default {
   data() {
     
     return {
+      isWait:false,
       warnDogrulama: "",
       result :[],
       img_base_url: store.state.img_base_url,
@@ -184,6 +189,11 @@ export default {
       });
   },
   methods: {
+    isWaitFonk(situation)
+    {
+      this.isWait=situation
+
+    },
     NoImg: function(event)
     {
          setTimeout(() => event.target.style.display = 'none', 1000);
@@ -198,6 +208,10 @@ export default {
       this.warnKurum = "";
       this.warnTelefon = "";
       this.warnEposta = "";
+
+      
+      var isWaitFonk = this.isWaitFonk;
+
    var key = true;
         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -237,6 +251,8 @@ export default {
         return false;
       }
 
+      isWaitFonk(true);
+
       this.file = this.$refs.file.files[0];
       let formData = new FormData();
       formData.append("file", this.file);
@@ -261,10 +277,15 @@ export default {
         })
         .then(function (response) {
           //console.log(response);
+          isWaitFonk(false);
+
           if(response.data == 1)
           {
             location.reload();
 
+          }
+          else{
+       
           }
         })
         .catch(function (error) {
@@ -275,8 +296,28 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .form-control {
   width: 50%;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 </style>
