@@ -16,7 +16,7 @@
             <h3 v-html="'<div>' + result.name + '</div>'"></h3>
             <p v-html="'<div>' + result.content + '</div>'"></p>
           </div>
-        <img :src="img_base_url+result.img_url" alt="About" @error="NoImg">
+        <img :src="img_base_url+result.img_url" alt="About" >
       </div>
     </div>
 
@@ -219,25 +219,25 @@ export default {
         this.warnEposta="* Lütfen eposta alanını uygun formatta giriniz !";
     }
       var key = true;
-      if (!(this.mail.ad_soyad.length>4 && this.mail.ad_soyad.length<250)) {
-        this.warnAdSoyad = "* Lütfen ad ve soyad alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.ad_soyad.length>1 && this.mail.ad_soyad.length<250)) {
+        this.warnAdSoyad = "* Lütfen ad ve soyad alanını 1 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (!(this.mail.unvan.length>4 && this.mail.unvan.length<250)) {
-        this.warnUnvan = "* Lütfen unvan alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.unvan.length>1 && this.mail.unvan.length<250)) {
+        this.warnUnvan = "* Lütfen unvan alanını 1 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (!(this.mail.kurum.length >4 && this.mail.kurum.length<250)) {
-        this.warnKurum = "* Lütfen kurum alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.kurum.length >1 && this.mail.kurum.length<250)) {
+        this.warnKurum = "* Lütfen kurum alanını 1 ile 250 karakter arasında giriniz !";
         key = false;
       }
 
-      if (!(this.mail.telefon.length >4 && this.mail.telefon.length<250)) {
-        this.warnTelefon = "* Lütfen telefon alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.telefon.length >1 && this.mail.telefon.length<250)) {
+        this.warnTelefon = "* Lütfen telefon alanını 1 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (!(this.mail.e_posta.length >4 && this.mail.e_posta.length<250)) {
-        this.warnEposta = "* Lütfen e-posta alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.e_posta.length >1 && this.mail.e_posta.length<250)) {
+        this.warnEposta = "* Lütfen e-posta alanını 1 ile 250 karakter arasında giriniz !";
         key = false;
       }
       if(isSuccess == false){

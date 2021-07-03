@@ -21,7 +21,7 @@
               v-html="'<div>' + result.content + '</div>'"
             ></p>
           </div>
-          <img :src="img_base_url+result.img_url" alt="About" @error="NoImg">
+          <img :src="img_base_url+result.img_url" alt="About">
 
       </div>
     </div>

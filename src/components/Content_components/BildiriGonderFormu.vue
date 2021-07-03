@@ -235,9 +235,9 @@ export default {
       var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       var key = true;
 
-      if (!(this.mail.bildiri_basligi.length>4 && this.mail.bildiri_basligi.length<250)) {
+      if (!(this.mail.bildiri_basligi.length>1 && this.mail.bildiri_basligi.length<250)) {
         this.warnBildiriBasligi =
-          "* Lütfen bildiri başlığı alanını 4 ile 250 karakter arasında giriniz !";
+          "* Lütfen bildiri başlığı alanını 2 ile 250 karakter arasında giriniz !";
         key = false;
       }
 
@@ -245,12 +245,12 @@ export default {
         this.warnEposta = "* Lütfen eposta alanını uygun formatta giriniz !";
         key = false;
       }
-      if (!(this.mail.yazar1AdSoyad.length>4 && this.mail.yazar1AdSoyad.length<250)) {
-        this.warnYazar = "* Lütfen yazar1 ad soyad alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.yazar1AdSoyad.length>1 && this.mail.yazar1AdSoyad.length<250)) {
+        this.warnYazar = "* Lütfen yazar1 ad soyad alanını 2 ile 250 karakter arasında giriniz !";
         key = false;
       }
-      if (!(this.mail.yazar1No.length>4 && this.mail.yazar1No.length<250)) {
-        this.warnYazarOrcid = "* Lütfen yazar1 orcid no alanını 4 ile 250 karakter arasında giriniz !";
+      if (!(this.mail.yazar1No.length>1 && this.mail.yazar1No.length<250)) {
+        this.warnYazarOrcid = "* Lütfen yazar1 orcid no alanını 2 ile 250 karakter arasında giriniz !";
         key = false;
       }
 
@@ -338,7 +338,7 @@ export default {
           //console.log(response);
           isWaitFonk(false);
 
-          if(response.data == 1)
+          if(response.status == 200)
           {
             location.reload();
 

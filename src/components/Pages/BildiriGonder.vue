@@ -20,7 +20,7 @@
             <p v-html="'<div>' + result.content + '</div>'"></p>
             
           </div>
-             <img :src="img_base_url+result.img_url" alt="About" @error="NoImg">
+             <img :src="img_base_url+result.img_url" alt="About" >
         </div>
         <br /><br /><br /><br /><br /><br />
         <BildiriGonderFormu/>       
@@ -68,12 +68,12 @@ export default {
       });
   },
 
-  methods: {
+ /* methods: {
     NoImg: function(event)
     {
-         setTimeout(() => event.target.style.display = 'none', 1000);
+         setTimeout(() => event.target.style.display = 'none');
     },
-  },
+  },*/
 };
 </script>
 
